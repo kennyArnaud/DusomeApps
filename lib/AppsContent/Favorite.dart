@@ -65,7 +65,7 @@ class FavoritePage extends StatelessWidget {
                           category: e.category!,
                           ontap: (){
                             print(e.pushkey);
-                            //Get.to(bookpage(bookUrl: e));
+                           // Get.to(bookpage(bookUrl: e));
                           },
                         )).toList()
                     ),

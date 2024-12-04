@@ -26,11 +26,11 @@ class BookFavoris extends StatefulWidget {
 }
 
 class _BookFavorisState extends State<BookFavoris> {
-  Future<void> _deleteFromFavorites(String pushKey) async {
+  Future<void> _deleteFromFavorites(String title) async {
     try {
       await FirebaseDatabase.instance.ref("favoritebooks")
           .child(FirebaseAuth.instance.currentUser?.uid ?? '')
-          .child(pushKey)
+          .child(title)
           .remove();
 
       // Mettre à jour l'état de l'appui après la suppression
@@ -63,8 +63,8 @@ class _BookFavorisState extends State<BookFavoris> {
               child: Text('Supprimer'),
               onPressed: () {
                 Navigator.of(context).pop();
-                if (widget.pushkey != null) {
-                  _deleteFromFavorites(widget.pushkey!);
+                if (widget.title != null) {
+                  _deleteFromFavorites(widget.title!);
                 } else {
                   print("Erreur: pushkey est nul.");
                 }
